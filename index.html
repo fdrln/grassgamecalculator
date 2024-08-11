@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Grass Game Calculator</title>
+  </head>
+  <body>
+    <script src="js/index.js"></script>
+    <div class="container">
+      <div class="heading" id="grass">GRASS</div>
+      <form>
+        <div class="label-info">
+          Wie viel Geld muss für den Sieg eingenommen werden?
+        </div>
+        <input class="input" type="text" id="winAmount" placeholder="250000" />
+        <div class="label-info">Wie viele Dealer kämpfen um den Markt?</div>
+        <select
+          onchange="createPlayerNameInputs()"
+          class="select-box"
+          id="playerSelect"
+          value=""
+          placeholder="Anzahl Spieler"
+        >
+          <option disabled selected value>Anzahl Spieler</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </form>
+      <div class="player-names" id="playerNames"></div>
+      <br />
+      <button class="button">MARKT ERÖFFNEN</button>
+    </div>
+  </body>
+</html>

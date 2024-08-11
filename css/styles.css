@@ -1,0 +1,102 @@
+body {
+  display: flex;
+  justify-content: center;
+  font-family: Roboto;
+  background: #212222 !important;
+  align-items: center;
+  margin: 50px auto auto auto;
+}
+
+.heading {
+  max-width: fit-content;
+  color: rgb(255, 255, 255);
+  width: 50%;
+  margin: auto;
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.123);
+  border-radius: 20px;
+  padding: 20px;
+  justify-content: center;
+  margin: auto;
+}
+
+.select-box {
+  border: #06283d;
+  border-radius: 10px;
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  font-size: 25px;
+  margin: 10px auto 10px auto;
+  display: block;
+}
+
+.input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: #06283d;
+  border-radius: 10px;
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  font-size: 25px;
+  margin: 10px auto 10px auto;
+  display: block;
+}
+
+.label-info {
+  font-size: 20px;
+  color: white;
+}
+
+.button {
+  background-color: rgba(0, 200, 0, 0.5);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 200px;
+  margin: 100px auto auto auto;
+  display: block;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #04f718;
+}
+
+.player-name {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: #06283d;
+  border-radius: 10px;
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  font-size: 25px;
+  margin: 20px auto 10px auto;
+  display: block;
+}
