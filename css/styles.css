@@ -50,10 +50,11 @@ body {
 
 .label-info {
   font-size: 20px;
+  text-align: center;
   color: white;
 }
 
-.button {
+.primary-button {
   background-color: rgba(0, 200, 0, 0.5);
   border-radius: 8px;
   border-style: none;
@@ -70,7 +71,6 @@ body {
   text-align: center;
   text-decoration: none;
   transition: color 100ms;
-  vertical-align: baseline;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -79,12 +79,12 @@ body {
   margin-right: auto;
   margin-top: 100px;
   width: 200px;
-  margin: 100px auto auto auto;
+  margin: 30px auto auto auto;
   display: block;
 }
 
-.button:hover,
-.button:focus {
+.primary-button:hover,
+.primary-button:focus {
   background-color: #04f718;
 }
 
@@ -99,4 +99,8 @@ body {
   font-size: 25px;
   margin: 20px auto 10px auto;
   display: block;
+}
+
+#player1 {
+  color: green;
 }
