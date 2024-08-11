@@ -1,6 +1,7 @@
 let playerAmount;
 let playerNames = [];
 let playerNameInput;
+let winAmount;
 
 function createPlayerNameInputs() {
   playerNameInputs.innerHTML = "";
@@ -23,4 +24,15 @@ function savePlayerNames() {
     playerNames.push(input.value);
     console.log("Player names:", playerNames);
   });
+}
+
+function startGameSession() {
+  saveWinAmount();
+  savePlayerNames();
+  window.location = "views/GameSession.html";
+}
+
+function saveWinAmount() {
+  winAmount = document.getElementById("winAmount").value;
+  console.log("Win Amount:", winAmount);
 }

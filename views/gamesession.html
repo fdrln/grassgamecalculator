@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Grass Game Calculator</title>
+  </head>
+  <body>
+    <script src="/js/gamesession.js"></script>
+    <script src="/js/index.js"></script>
+    <div class="container">
+      <div class="primary-button game-status">Aktueller Spielstand</div>
+      <div class="heading">Spieler 1</div>
+      <div class="score-input-group">
+        <div class="score-input">
+          <label class="label-info">Protected</label>
+          <input type="text" class="input" />
+
+          <label class="label-info">Geld</label>
+          <input type="text" class="input" />
+
+          <div class="checkbox-container">
+            <label for="banker" class="label-info checkbox-label"
+              >Banker:</label
+            >
+            <input type="checkbox" id="banker" class="card-checkbox" />
+
+            <label for="soldOut" class="label-info checkbox-label"
+              >Sold Out:</label
+            >
+            <input type="checkbox" id="soldOut" class="card-checkbox" />
+
+            <label for="doubleCrossed" class="label-info checkbox-label"
+              >Double Crossed:</label
+            >
+            <input type="checkbox" id="doubleCrossed" class="card-checkbox" />
+
+            <label for="wipedOut" class="label-info checkbox-label"
+              >Utterly Wiped out:</label
+            >
+            <input type="checkbox" id="wipedOut" class="card-checkbox" />
+          </div>
+        </div>
+      </div>
+      <button class="primary-button" id="nextButton">Nächster Spieler</button>
+      <button class="primary-button" id="backButton">Zurück</button>
+    </div>
+  </body>
+</html>

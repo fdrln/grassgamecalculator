@@ -4,16 +4,15 @@ body {
   font-family: Roboto;
   background: #212222 !important;
   align-items: center;
-  margin: 50px auto auto auto;
 }
 
 .heading {
-  max-width: fit-content;
   color: rgb(255, 255, 255);
-  width: 50%;
   margin: auto;
   margin-bottom: 50px;
   font-size: 30px;
+  text-align: center;
+  display: block;
 }
 
 .container {
@@ -22,6 +21,7 @@ body {
   padding: 20px;
   justify-content: center;
   margin: auto;
+  width: 100%;
 }
 
 .select-box {
@@ -33,11 +33,10 @@ body {
   font-size: 25px;
   margin: 10px auto 10px auto;
   display: block;
+  text-wrap: auto;
 }
 
 .input {
-  margin-top: 10px;
-  margin-bottom: 10px;
   border: #06283d;
   border-radius: 10px;
   width: 50%;
@@ -52,6 +51,7 @@ body {
   font-size: 20px;
   text-align: center;
   color: white;
+  align-items: center;
 }
 
 .primary-button {
@@ -99,8 +99,51 @@ body {
   font-size: 25px;
   margin: 20px auto 10px auto;
   display: block;
+  min-width: 70%;
 }
 
-#player1 {
-  color: green;
+.game-status {
+  margin-left: 2px;
+  margin-top: 2px;
+  margin-right: auto;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: rgba(65, 65, 247, 0.512);
+  max-width: 30%;
+}
+
+.game-status:hover,
+.game-status:focus {
+  background-color: rgb(65, 65, 247);
+}
+
+.score-input-group {
+  display: block;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-container {
+  display: grid;
+  grid-template-columns: max-content max-content;
+}
+
+.score-input {
+  display: grid;
+}
+
+.checkbox-label {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.card-checkbox {
+  margin-top: 10px;
+  margin-left: 30px;
 }
