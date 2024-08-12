@@ -38,7 +38,6 @@ function savePlayerNames() {
     playerNames.push(input.value);
     console.log("Player names:", playerNames);
   });
-  return [, playerNames];
 }
 
 function startGameSession() {
