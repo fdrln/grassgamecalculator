@@ -8,14 +8,13 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <script src="/js/index.js"></script>
     <title>Grass Game Calculator</title>
   </head>
-  <body>
-    <script src="/js/index.js"></script>
-
+  <body onload="getPlayerNames(); getWinAmount();">
     <div class="container">
       <div class="primary-button game-status">Aktueller Spielstand</div>
-      <div class="heading" onload="getCurrentPlayer()" id="currentPlayer"></div>
+      <div class="heading" id="currentPlayer"></div>
       <div class="score-input-group">
         <div class="score-input">
           <label class="label-info">Protected</label>
@@ -47,14 +46,12 @@
           </div>
         </div>
       </div>
-      <button
-        class="primary-button"
-        onclick="getCurrentPlayer()"
-        id="nextButton"
-      >
+      <button class="primary-button" id="nextButton" onclick="nextPlayer()">
         Nächster Spieler
       </button>
-      <button class="primary-button" id="backButton">Zurück</button>
+      <button class="primary-button" id="backButton" onclick="nextPlayer()">
+        Zurück
+      </button>
     </div>
   </body>
 </html>

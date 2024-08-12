@@ -3,7 +3,7 @@ let playerNames = [];
 let playerNameInput;
 let winAmount;
 let roundCount = 0;
-let playerNumberTurn = 1;
+let playerNumberTurn = 0;
 let hasBanker;
 let hasSoldOut;
 let hasDoubleCrossed;
@@ -38,17 +38,20 @@ function savePlayerNames() {
     playerNames.push(input.value);
     console.log("Player names:", playerNames);
   });
+  playerNamesString = JSON.stringify(playerNames);
+  localStorage.setItem("playerNames", playerNamesString);
 }
 
 function startGameSession() {
   saveWinAmount();
   savePlayerNames();
   window.location = "views/GameSession.html";
+  getPlayerNames();
 }
 
 function saveWinAmount() {
   winAmount = document.getElementById("winAmount").value;
-  console.log("Win Amount:", winAmount);
+  localStorage.setItem("winAmount", winAmount);
 }
 
 function saveAllRoundInputs() {
@@ -58,12 +61,28 @@ function saveAllRoundInputs() {
   hasSoldOut = document.getElementById("soldOut").checked;
   hasDoubleCrossed = document.getElementById("doubleCrossed").checked;
   hasWipedOut = document.getElementById("wipedOut").checked;
-  console.log("Protected Money:", protectedMoney);
-  console.log("Open Money:", openMoney);
-  console.log("Has Banker:", hasBanker);
-  console.log("hasSoldOut", hasSoldOut);
 }
 
-function getCurrentPlayer() {
-  console.log("CurrentPlayer:", playerNames);
+function getPlayerNames() {
+  playerNamesString = localStorage.getItem("playerNames");
+  playerNames = JSON.parse(playerNamesString);
+  document.getElementById("currentPlayer").innerHTML = playerNames[0];
+  console.log("playernames: ", playerNames);
+}
+
+function getWinAmount() {
+  winAmount = localStorage.getItem("winAmount");
+  console.log(winAmount);
+}
+
+function nextPlayer() {
+  if (playerNumberTurn < playerNames.length - 1) {
+    playerNumberTurn++;
+    document.getElementById("currentPlayer").innerHTML =
+      playerNames[playerNumberTurn];
+  } else {
+    playerNumberTurn = 0;
+    document.getElementById("currentPlayer").innerHTML =
+      playerNames[playerNumberTurn];
+  }
 }
