@@ -2,6 +2,21 @@ let playerAmount;
 let playerNames = [];
 let playerNameInput;
 let winAmount;
+let roundCount = 0;
+let playerNumberTurn = 1;
+let hasBanker;
+let hasSoldOut;
+let hasDoubleCrossed;
+let hasWipedOut;
+let currentMoneyScore;
+let newMoneyScore;
+let protectedMoney;
+let openMoney;
+
+const banker = 0.2;
+const soldOut = 250000;
+const doubleCrossed = 50000;
+const wipedOut = 100000;
 
 function createPlayerNameInputs() {
   playerNameInputs.innerHTML = "";
@@ -19,11 +34,11 @@ function createPlayerNameInputs() {
 
 function savePlayerNames() {
   const playerInputs = document.querySelectorAll(".player-name");
-  playerNames = [];
   playerInputs.forEach((input) => {
     playerNames.push(input.value);
     console.log("Player names:", playerNames);
   });
+  return [, playerNames];
 }
 
 function startGameSession() {
@@ -35,4 +50,21 @@ function startGameSession() {
 function saveWinAmount() {
   winAmount = document.getElementById("winAmount").value;
   console.log("Win Amount:", winAmount);
+}
+
+function saveAllRoundInputs() {
+  protectedMoney = document.getElementById("protectedMoney").value;
+  openMoney = document.getElementById("openMoney").value;
+  hasBanker = document.getElementById("banker").checked;
+  hasSoldOut = document.getElementById("soldOut").checked;
+  hasDoubleCrossed = document.getElementById("doubleCrossed").checked;
+  hasWipedOut = document.getElementById("wipedOut").checked;
+  console.log("Protected Money:", protectedMoney);
+  console.log("Open Money:", openMoney);
+  console.log("Has Banker:", hasBanker);
+  console.log("hasSoldOut", hasSoldOut);
+}
+
+function getCurrentPlayer() {
+  console.log("CurrentPlayer:", playerNames);
 }

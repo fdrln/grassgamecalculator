@@ -147,3 +147,12 @@ body {
   margin-top: 10px;
   margin-left: 30px;
 }
+
+#backButton {
+  background-color: rgba(255, 0, 0, 0.399);
+}
+
+#backButton:hover,
+#backButton:focus {
+  background-color: red;
+}

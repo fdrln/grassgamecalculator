@@ -11,18 +11,18 @@
     <title>Grass Game Calculator</title>
   </head>
   <body>
-    <script src="/js/gamesession.js"></script>
     <script src="/js/index.js"></script>
+
     <div class="container">
       <div class="primary-button game-status">Aktueller Spielstand</div>
-      <div class="heading">Spieler 1</div>
+      <div class="heading" onload="getCurrentPlayer()" id="currentPlayer"></div>
       <div class="score-input-group">
         <div class="score-input">
           <label class="label-info">Protected</label>
-          <input type="text" class="input" />
+          <input type="number" step="1000" class="input" id="protectedMoney" />
 
           <label class="label-info">Geld</label>
-          <input type="text" class="input" />
+          <input type="number" step="1000" class="input" id="openMoney" />
 
           <div class="checkbox-container">
             <label for="banker" class="label-info checkbox-label"
@@ -47,7 +47,13 @@
           </div>
         </div>
       </div>
-      <button class="primary-button" id="nextButton">Nächster Spieler</button>
+      <button
+        class="primary-button"
+        onclick="getCurrentPlayer()"
+        id="nextButton"
+      >
+        Nächster Spieler
+      </button>
       <button class="primary-button" id="backButton">Zurück</button>
     </div>
   </body>
