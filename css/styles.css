@@ -2,21 +2,29 @@ body {
   display: flex;
   justify-content: center;
   font-family: Roboto;
-  background: black !important;
   align-items: center;
+  background-color: black;
 }
 
 .heading {
   color: rgb(255, 255, 255);
   margin: auto;
   margin-bottom: 50px;
-  font-size: 30px;
+  font-size: 70px;
   text-align: center;
   display: block;
 }
 
+.miniLogo {
+  max-width: 100px;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 20px;
+  margin-top: 20px;
+}
 .container {
-  background: rgba(223, 223, 223, 0.218);
   border-radius: 20px;
   padding: 20px;
   justify-content: center;
@@ -25,12 +33,6 @@ body {
   max-height: 100%;
   padding-bottom: 10px;
   overflow: auto;
-}
-
-#startScreen {
-  position: fixed;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0);
 }
 
 .select-box {
@@ -45,6 +47,12 @@ body {
   text-wrap: auto;
   background-color: rgba(255, 255, 255, 0.241);
   color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .input {
@@ -58,6 +66,12 @@ body {
   display: block;
   background-color: rgba(255, 255, 255, 0.241);
   color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .label-info {
@@ -68,8 +82,6 @@ body {
 }
 
 .primary-button {
-  background-color: rgba(0, 200, 0, 0.5);
-  border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
   color: #ffffff;
@@ -94,6 +106,12 @@ body {
   width: 200px;
   margin: 30px auto auto auto;
   display: block;
+  background: rgba(14, 250, 6, 0.349);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .primary-button:hover,
@@ -146,6 +164,13 @@ body {
 .checkbox-container {
   display: grid;
   grid-template-columns: max-content max-content;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px;
 }
 
 .score-input {
@@ -166,34 +191,31 @@ body {
   max-width: 20%;
 }
 
-/* The Modal (background) */
 .pop-up {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Modal Content/Box */
 .popup-content {
   background-image: url(/assets/img/paper.jpg);
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 80%;
   border-radius: 10px;
   animation-name: animatetop;
   animation-duration: 0.4s;
   overflow: auto;
 }
 
-/* Add Animation */
 @keyframes animatetop {
   from {
     top: -300px;
@@ -205,22 +227,28 @@ body {
   }
 }
 
+#startScreen {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 2;
+}
+
 #gameDataGrid {
   border-collapse: separate;
-  border-spacing: 5px; /* add gaps between cells */
-  overflow: auto; /* add a horizontal scrollbar */
+  border-spacing: 5px;
+  overflow: auto;
 }
 
 #gameDataGrid th,
 #gameDataGrid td {
-  border: 1px solid #ddd; /* add thin lines around cells */
-  padding: 5px; /* add padding to cells */
-  text-align: center; /* center text in cells */
-  border-bottom: 2px solid gray; /* add bottom border between cells */
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+  border-bottom: 2px solid gray;
   border-right: 2px solid gray;
 }
 
-/* The Close Button */
 #closeButton {
   color: #aaa;
   float: right;
@@ -235,8 +263,12 @@ body {
   cursor: pointer;
 }
 
+#continueButton {
+  background-color: rgb(0, 134, 0);
+}
+
 #backButton {
-  background-color: rgba(255, 0, 0, 0.399);
+  background-color: rgb(255, 0, 0);
 }
 
 #backButton:hover,
@@ -277,11 +309,40 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  background-color: rgba(65, 65, 247, 0.512);
+  background: url(/assets/img/paper.jpg) rgba(65, 65, 247, 0.512);
+  color: black;
   max-width: 30%;
 }
 
 #gameStatus:hover,
 #gameStatus:focus {
   background-color: rgb(65, 65, 247);
+}
+
+#winMessage {
+  display: flex;
+  justify-content: center;
+}
+
+/* For Mobile */
+@media screen and (max-width: 540px) {
+  .logo {
+    max-width: 60%;
+  }
+}
+
+/* For Tablets */
+@media screen and (min-width: 540px) and (max-width: 810px) {
+  .logo {
+    max-width: 40%;
+  }
+  #startScreen {
+    padding-bottom: 100px;
+  }
+}
+
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
 }

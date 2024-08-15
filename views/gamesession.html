@@ -13,17 +13,31 @@
   </head>
   <body onload="loadState(); updateRoundCount();">
     <div class="container">
+      <div>
+        <img class="miniLogo" src="/assets/img/logo.png" alt="" />
+      </div>
       <div class="primary-button" id="gameStatus">Aktueller Spielstand</div>
-
       <div class="heading" id="currentPlayer"></div>
       <div class="heading" id="roundCount"></div>
       <div class="score-input-group">
         <div class="score-input">
           <label class="label-info">Protected</label>
-          <input type="number" step="1000" class="input" id="protectedMoney" />
+          <input
+            type="number"
+            value="0"
+            step="1000"
+            class="input"
+            id="protectedMoney"
+          />
 
           <label class="label-info">Geld</label>
-          <input type="number" step="1000" class="input" id="openMoney" />
+          <input
+            type="number"
+            value="0"
+            step="1000"
+            class="input"
+            id="openMoney"
+          />
 
           <div class="label-info">Höchste Geld Karte</div>
           <select
@@ -66,13 +80,27 @@
       <button class="primary-button" id="nextButton" onclick="nextPlayer()">
         Nächster Spieler
       </button>
-      <button class="primary-button" id="backButton" onclick="testStuff()">
-        Zurück
-      </button>
     </div>
     <div id="popUp" class="pop-up">
       <div class="popup-content">
         <span id="closeButton">&times;</span>
+        <h2 id="winMessage"></h2>
+        <div id="winButtons" style="display: none">
+          <button
+            class="primary-button"
+            id="continueButton"
+            onclick="continuePlaying()"
+          >
+            Weiter Spielen
+          </button>
+          <button
+            class="primary-button"
+            id="backButton"
+            onclick="goBackToStart()"
+          >
+            Beenden
+          </button>
+        </div>
         <table id="gameDataGrid">
           <thead>
             <tr></tr>

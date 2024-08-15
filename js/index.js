@@ -166,10 +166,8 @@ function updateGameDataGrid() {
     new Set(allPlayersData.map((player) => player.name))
   );
 
-  // Clear the existing table body
   gameDataGridBody.innerHTML = "";
 
-  // Create the table header with player names
   const headerRow = document.createElement("tr");
   const roundHeaderCell = document.createElement("th");
   roundHeaderCell.textContent = "Runde";
@@ -181,7 +179,6 @@ function updateGameDataGrid() {
   });
   gameDataGridBody.appendChild(headerRow);
 
-  // Loop through each round and add a row to the table
   const rounds = Array.from(
     new Set(allPlayersData.map((player) => player.round))
   );
@@ -213,7 +210,6 @@ function updateGameDataGrid() {
     playerTotals[playerName] += parseInt(playerData.roundResult);
   });
 
-  // Display total round result for each player under the grid
   const totalRow = document.createElement("tr");
   const totalHeaderCell = document.createElement("th");
   totalHeaderCell.textContent = "Total";
@@ -224,11 +220,13 @@ function updateGameDataGrid() {
     totalRow.appendChild(totalCell);
   });
   gameDataGridBody.appendChild(totalRow);
+
+  checkForWin();
 }
 
 function clearFields() {
-  document.getElementById("protectedMoney").value = "";
-  document.getElementById("openMoney").value = "";
+  document.getElementById("protectedMoney").value = "0";
+  document.getElementById("openMoney").value = "0";
   document.getElementById("banker").checked = false;
   document.getElementById("soldOut").checked = false;
   document.getElementById("doubleCrossed").checked = false;
@@ -251,64 +249,7 @@ window.onclick = function (event) {
     popUp.style.display = "none";
   }
 };
-//GETTERS AND SETTERS
 
-function setGridData() {
-  gridData = document.getElementById("gameDataGrid").innerHTML;
-  localStorage.setItem("gridData", gridData);
-}
-function setRoundCount() {
-  roundCountString = JSON.stringify(roundCount);
-  localStorage.setItem("roundCount", roundCountString);
-}
-
-function setPlayerNumberTurn() {
-  playerNumberTurnString = JSON.stringify(playerNumberTurn);
-  localStorage.setItem("playerNumberTurn", playerNumberTurnString);
-}
-
-function setWinAmount() {
-  winAmount = document.getElementById("winAmount").value;
-  winAmountString = JSON.stringify(winAmount);
-  localStorage.setItem("winAmount", winAmountString);
-}
-
-function getWinAmount() {
-  winAmountString = localStorage.getItem("winAmount");
-  winAmount = JSON.parse(winAmountString);
-}
-
-function getPlayerNames(callback) {
-  console.log("Getting player names...");
-  playerNamesString = localStorage.getItem("playerNames");
-  playerNames = JSON.parse(playerNamesString);
-  document.getElementById("currentPlayer").innerHTML = playerNames[0];
-  console.log("playernames: ", playerNames);
-  callback();
-}
-
-function getGridData() {
-  gridData = localStorage.getItem("gridData");
-  if (gridData) {
-    document.getElementById("gameDataGrid").innerHTML = gridData;
-  }
-}
-
-function getRoundCount() {
-  roundCountString = localStorage.getItem("roundCount");
-  roundCount = JSON.parse(roundCountString);
-}
-
-function getPlayerNumberTurn() {
-  playerNumberTurnString = localStorage.getItem("playerNumberTurn");
-  playerNumberTurn = JSON.parse(playerNumberTurnString);
-}
-
-function testStuff() {
-  console.log("updateround: ", roundCount);
-}
-
-// Save state function
 function saveState() {
   const state = {
     playerNames: playerNames,
@@ -349,11 +290,9 @@ function loadState() {
     hasDoubleCrossed = state.hasDoubleCrossed;
     hasWipedOut = state.hasWipedOut;
 
-    // Update UI with loaded state
     document.getElementById("currentPlayer").innerHTML =
       playerNames[playerNumberTurn];
     document.getElementById("roundCount").innerHTML = "Runde: " + roundCount;
-    // Update other UI elements as needed
   } else {
     updateRoundCount();
     getPlayerNames();
@@ -368,3 +307,91 @@ function loadState() {
 window.onload = function () {
   loadState();
 };
+
+function checkForWin() {
+  const playerTotals = {};
+  const allPlayersData = JSON.parse(localStorage.getItem("allPlayersData"));
+  allPlayersData.forEach((playerData) => {
+    const playerName = playerData.name;
+    if (!playerTotals[playerName]) {
+      playerTotals[playerName] = 0;
+    }
+    playerTotals[playerName] += parseInt(playerData.roundResult);
+  });
+
+  const winAmount = JSON.parse(localStorage.getItem("winAmount"));
+  Object.keys(playerTotals).forEach((playerName) => {
+    if (playerTotals[playerName] >= winAmount) {
+      popUp.style.display = "block";
+      document.getElementById("winMessage").style.display = "flex";
+      document.getElementById(
+        "winMessage"
+      ).innerHTML = `${playerName} hat gewonnen!`;
+      document.getElementById("winButtons").style.display = "block";
+    }
+  });
+}
+
+function continuePlaying() {
+  winAmount = getWinAmount();
+  winAmount = winAmount * 2;
+  localStorage.setItem("winAmount", JSON.stringify(winAmount));
+  popUp.style.display = "none";
+  document.getElementById("winButtons").style.display = "none";
+  document.getElementById("winMessage").style.display = "none";
+}
+
+function goBackToStart() {
+  window.location.href = "../index.html";
+}
+
+//GETTERS AND SETTERS
+
+function setGridData() {
+  gridData = document.getElementById("gameDataGrid").innerHTML;
+  localStorage.setItem("gridData", gridData);
+}
+function setRoundCount() {
+  roundCountString = JSON.stringify(roundCount);
+  localStorage.setItem("roundCount", roundCountString);
+}
+
+function setPlayerNumberTurn() {
+  playerNumberTurnString = JSON.stringify(playerNumberTurn);
+  localStorage.setItem("playerNumberTurn", playerNumberTurnString);
+}
+
+function setWinAmount() {
+  winAmount = document.getElementById("winAmount").value;
+  winAmountString = JSON.stringify(winAmount);
+  localStorage.setItem("winAmount", winAmountString);
+}
+
+function getWinAmount() {
+  winAmountString = localStorage.getItem("winAmount");
+  return JSON.parse(winAmountString);
+}
+
+function getPlayerNames(callback) {
+  playerNamesString = localStorage.getItem("playerNames");
+  playerNames = JSON.parse(playerNamesString);
+  document.getElementById("currentPlayer").innerHTML = playerNames[0];
+  callback();
+}
+
+function getGridData() {
+  gridData = localStorage.getItem("gridData");
+  if (gridData) {
+    document.getElementById("gameDataGrid").innerHTML = gridData;
+  }
+}
+
+function getRoundCount() {
+  roundCountString = localStorage.getItem("roundCount");
+  roundCount = JSON.parse(roundCountString);
+}
+
+function getPlayerNumberTurn() {
+  playerNumberTurnString = localStorage.getItem("playerNumberTurn");
+  playerNumberTurn = JSON.parse(playerNumberTurnString);
+}
