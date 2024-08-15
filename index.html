@@ -10,15 +10,25 @@
     />
     <title>Grass Game Calculator</title>
   </head>
-  <body>
-    <script src="js/index.js"></script>
-    <div class="container">
-      <div class="heading" id="grass">GRASS</div>
+  <body onload="resetValues()">
+    <video
+      id="smokeVideo"
+      playsinline
+      autoplay
+      loop
+      src="assets/video/smoke.mp4"
+      autoplay
+      muted
+    ></video>
+    <div class="container" id="startScreen">
+      <div class="heading" id="grass">
+        <img class="logo" src="assets/img/logo.png" alt="" />
+      </div>
       <form>
         <div class="label-info">
           Wie viel Geld muss für den Sieg eingenommen werden?
         </div>
-        <input class="input" type="text" id="winAmount" placeholder="250000" />
+        <input class="input" type="number" id="winAmount" value="250000" />
         <div class="label-info">Wie viele Dealer kämpfen um den Markt?</div>
         <select
           onchange="createPlayerNameInputs()"
@@ -27,7 +37,7 @@
           value=""
           placeholder="Anzahl Spieler"
         >
-          <option disabled selected value>Anzahl Spieler</option>
+          <option disabled selected value>Spieler</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
@@ -45,5 +55,6 @@
         MARKT ERÖFFNEN
       </button>
     </div>
+    <script src="js/index.js"></script>
   </body>
 </html>

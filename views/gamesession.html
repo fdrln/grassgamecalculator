@@ -8,13 +8,15 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <script src="/js/index.js"></script>
+
     <title>Grass Game Calculator</title>
   </head>
-  <body onload="getPlayerNames(); getWinAmount();">
+  <body onload="loadState(); updateRoundCount();">
     <div class="container">
-      <div class="primary-button game-status">Aktueller Spielstand</div>
+      <div class="primary-button" id="gameStatus">Aktueller Spielstand</div>
+
       <div class="heading" id="currentPlayer"></div>
+      <div class="heading" id="roundCount"></div>
       <div class="score-input-group">
         <div class="score-input">
           <label class="label-info">Protected</label>
@@ -22,6 +24,21 @@
 
           <label class="label-info">Geld</label>
           <input type="number" step="1000" class="input" id="openMoney" />
+
+          <div class="label-info">Höchste Geld Karte</div>
+          <select
+            class="select-box"
+            id="highestPeddle"
+            value=""
+            placeholder="Geldkarte"
+          >
+            <option disabled value>Geldkarte</option>
+            <option selected value="0">0</option>
+            <option value="5000">5000</option>
+            <option value="25000">25.000</option>
+            <option value="50000">50.000</option>
+            <option value="100000">100.000</option>
+          </select>
 
           <div class="checkbox-container">
             <label for="banker" class="label-info checkbox-label"
@@ -49,9 +66,21 @@
       <button class="primary-button" id="nextButton" onclick="nextPlayer()">
         Nächster Spieler
       </button>
-      <button class="primary-button" id="backButton" onclick="nextPlayer()">
+      <button class="primary-button" id="backButton" onclick="testStuff()">
         Zurück
       </button>
     </div>
+    <div id="popUp" class="pop-up">
+      <div class="popup-content">
+        <span id="closeButton">&times;</span>
+        <table id="gameDataGrid">
+          <thead>
+            <tr></tr>
+          </thead>
+          <tbody id="gameDataGridBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="/js/index.js"></script>
   </body>
 </html>
